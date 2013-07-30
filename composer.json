@@ -1,0 +1,20 @@
+{
+    "name": "rightleaf/cart",
+    "type": "library",
+    "description": "A custom cart library.",
+    "keywords": ["checkout", "cart"],
+    "homepage": "http://github.com/rightleaf/Cart.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rightleaf",
+            "email": "info@rightleaf.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.9"
+    },
+    "autoload": {
+        "psr-0": {"Rightleaf": "core/"}
+    }
+}
