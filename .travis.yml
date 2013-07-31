@@ -5,7 +5,7 @@ php:
 before_script:
     - composer install --dev
     - phpenv rehash
-script: phpunit
+script: phpunit phpunit.xml
 notifications:
     email:
         - code@rightleaf.com
