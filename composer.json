@@ -13,8 +13,9 @@
     ],
     "require": {
         "php": ">=5.4.9"
+        // "formbuilder": "formbilder"
     },
     "autoload": {
-        "psr-0": {"Rightleaf": "core/"}
+        "psr-0": {"Rightleaf": "src/"}
     }
 }
