@@ -2,7 +2,7 @@
 
 namespace Rightleaf\Cart\Tests;
 
-use Rightleaf\Cart\Product;
+use \Rightleaf\Cart\Product;
 use \Mockery as m;
 
 class DefaultProduct extends Product {}
