@@ -14,12 +14,6 @@ namespace Rightleaf\Cart;
 */
 interface OrderSource
 {
-	private $_source;
-
-	function __construct($source)
-	{
-		$this->_source = $source;
-	}
 
 	public function save();
 

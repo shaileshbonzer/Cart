@@ -9,6 +9,8 @@
 
 namespace Rightleaf\Cart;
 
+class OrderException extends \Exception {}
+
 /**
 * Order class for creating generic orders
 */
