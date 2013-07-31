@@ -1,21 +1,24 @@
 {
     "name": "rightleaf/cart",
     "type": "library",
-    "description": "A custom cart library.",
-    "keywords": ["checkout", "cart"],
+    "description": "A custom order/cart library.",
+    "keywords": ["checkout", "cart","orders"],
     "homepage": "http://github.com/rightleaf/Cart.git",
     "license": "MIT",
     "authors": [
         {
             "name": "Rightleaf",
-            "email": "info@rightleaf.com"
+            "email": "code@rightleaf.com"
         }
     ],
     "require": {
         "php": ">=5.4.9"
-        // "formbuilder": "formbilder"
+    },
+    "require-dev": {
+        "mockery/mockery": ">=0.7.2",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-0": {"Rightleaf": "src/"}
+        "psr-0": {"Rightleaf\\Cart": "src/"}
     }
 }
