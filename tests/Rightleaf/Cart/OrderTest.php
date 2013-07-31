@@ -71,11 +71,9 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
             $expectedTotal += $prodPrice;
 
             $prod = \Mockery::mock("Rightleaf\Cart\Product");
-            $prod->shouldReceive('getPrice')
-                     ->andReturn($prodPrice);
+            $prod->shouldReceive('getPrice')->andReturn($prodPrice);
 
             $order->addProduct($prod);
-
 
         }
 
