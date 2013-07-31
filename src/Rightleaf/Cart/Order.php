@@ -16,15 +16,24 @@ class OrderException extends \Exception {}
 */
 class Order
 {
-	private $order;
+    protected $name = "Unknown Order";
+    protected $id = NULL;
+    protected $products = [];
 
-	public function __construct(OrderSource $source)
-	{
-		$this->order = $source;
-	}
+    // public function __construct(OrderSource $source)
+    // {
+    // $this->order = $source;
+    // }
 
-	public function getOrderTotal();
-
-	public function getQtyTotal();
+    /**
+     * Get the order's name
+     *
+     * @return void
+     * @author
+     **/
+    public function getName()
+    {
+        return $this->name;
+    }
 
 }

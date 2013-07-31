@@ -12,5 +12,16 @@ use \Mockery as m;
 */
 class OrderTest extends \PHPUnit_Framework_TestCase {
 
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author
+     **/
+    public function testShouldInstantiateWithDefaults()
+    {
+        $order = new Order();
+        $this->assertEquals("Unknown Order", $order->getName(), 'Order instantiated with wrong name');
+    }
 
 }
