@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 
+
 namespace Rightleaf\Cart;
 
 class OrderException extends \Exception {}

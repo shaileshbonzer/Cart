@@ -7,6 +7,7 @@ use Rightleaf\Cart\Product;
 
 use \Mockery as m;
 
+
 /**
 * Product Tests
 */
