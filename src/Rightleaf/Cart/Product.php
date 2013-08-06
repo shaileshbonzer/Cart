@@ -7,6 +7,19 @@ abstract Class Product {
     protected $id = NULL;
     protected $price = 0;
     protected $name = 'Unkown Product';
+    protected $quantity = 0;
+
+
+    /**
+     * Load up with how many
+     *
+     * @return void
+     * @author
+     **/
+    public function __construct($quantity = 1)
+    {
+        $this->setQuantity($quantity);
+    }
 
 
     /**
@@ -40,6 +53,45 @@ abstract Class Product {
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * get the products quantity
+     *
+     * @return void
+     * @author
+     **/
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+
+    /**
+     * Return the value of this * qty
+     *
+     * @return void
+     * @author
+     **/
+    public function getLineTotal()
+    {
+        return $this->getQuantity() * $this->getPrice();
+    }
+
+    /**
+     * Set the quantity
+     *
+     * @return void
+     * @author
+     **/
+    public function setQuantity($quantity)
+    {
+        if(!is_numeric($quantity) || $quantity < 1)
+        {
+            throw new ProductException('Quantity must be a positive intiger > 0');
+        }
+
+        $this->quantity = $quantity;
     }
 
     /**

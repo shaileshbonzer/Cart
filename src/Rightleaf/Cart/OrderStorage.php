@@ -16,8 +16,10 @@ interface OrderStorage
 
     public function save();
 
-    public function addProduct();
+    public function addProduct(Product $prodcut, $qty = 1);
+    public function removeProduct($hash);
+
     public function getTotalItems();
-
-
+//  public function getUniqueItems();
+//  public function updateProductQuantity($hash, $qty);
 }

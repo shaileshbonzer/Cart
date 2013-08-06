@@ -46,6 +46,58 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Default Quantity should be 1
+     *
+     * @return void
+     * @author
+     **/
+    public function testDefaultQuantity()
+    {
+        $product = new DefaultProduct();
+        $this->assertSame(1, $product->getQuantity(), 'Did not default to 1');
+    }
+
+    /**
+     * Can we override the quantity
+     *
+     * @return void
+     * @author
+     **/
+    public function testQuantityCanBeSet()
+    {
+        $product = new DefaultProduct();
+        $product->setQuantity(20);
+
+        $this->assertEquals(20, $product->getQuantity());
+    }
+
+    /**
+     * Can we confuse the quantity
+     *
+     * @return void
+     * @author
+     **/
+    public function testQuantityHasToBeNumeric()
+    {
+        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive intiger > 0');
+        $product = new DefaultProduct();
+        $product->setQuantity('Invalid String');
+    }
+
+    /**
+     * Can we confuse the quantity
+     *
+     * @return void
+     * @author
+     **/
+    public function testQuantityHasToBePositive()
+    {
+        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive intiger > 0');
+        $product = new DefaultProduct();
+        $product->setQuantity(-20);
+    }
+
+    /**
      * Product Should throw exception if price is wrong
      *
      * @return void
@@ -122,6 +174,19 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         $product->setId(' ');
     }
 
+    /**
+     * Testing changing quantity and price on the fly
+     *
+     * @return void
+     * @author
+     **/
+    public function testCanCalculateOnTheFly()
+    {
+        $product = new DefaultProduct(2);
+        $product->setQuantity(10);
+        $product->setPrice(10);
+        $this->assertEquals(100, $product->getLineTotal());
+    }
 
 
     /**
