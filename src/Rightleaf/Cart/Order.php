@@ -16,7 +16,7 @@ class Order
 {
     protected $orderStorage;
 
-    public function __construct(OrderStorage $orderStorage)
+    public function __construct(OrderStorageInterface $orderStorage)
     {
         $this->orderStorage = $orderStorage;
     }

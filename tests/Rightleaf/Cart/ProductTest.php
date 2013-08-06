@@ -2,7 +2,10 @@
 
 use Rightleaf\Cart\Product;
 
-class DefaultProduct extends Product {}
+class DefaultProduct extends Product
+{
+
+}
 
 /**
 * Product Tests

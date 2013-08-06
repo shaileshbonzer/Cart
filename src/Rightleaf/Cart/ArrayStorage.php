@@ -1,8 +1,9 @@
 <?php namespace Rightleaf\Cart;
 
-use Rightleaf\Cart\OrderStorage;
+use Rightleaf\Cart\OrderStorageInterface;
 
-class ArrayStorage implements OrderStorage {
+class ArrayStorage implements OrderStorageInterface
+{
 
     protected $products = [];
     protected $shipping = [];

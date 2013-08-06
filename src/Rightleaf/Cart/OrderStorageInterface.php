@@ -6,12 +6,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-class OrderStorageException extends \Exception {}
+class OrderStorageException extends \Exception
+{
+
+}
 
 /**
 * Source Class
 */
-interface OrderStorage
+interface OrderStorageInterface
 {
 
     public function save();
