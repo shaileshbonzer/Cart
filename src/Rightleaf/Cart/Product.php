@@ -1,6 +1,4 @@
-<?php
-
-namespace Rightleaf\Cart;
+<?php namespace Rightleaf\Cart;
 
 class ProductException extends \Exception {}
 

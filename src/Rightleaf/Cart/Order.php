@@ -1,4 +1,4 @@
-<?php
+<?php namespace Rightleaf\Cart;
 /*
  * This file is part of the Cart package.
  *
@@ -7,9 +7,6 @@
  * file that was distributed with this source code.
  */
 
-
-namespace Rightleaf\Cart;
-
 class OrderException extends \Exception {}
 
 /**
@@ -17,25 +14,11 @@ class OrderException extends \Exception {}
 */
 class Order
 {
-    protected $name = "Unknown Order";
-    protected $id = NULL;
-    protected $subTotal = 0;
-    protected $products = [];
+    protected $orderStorage;
 
-    // public function __construct(OrderSource $source)
-    // {
-    // $this->order = $source;
-    // }
-
-    /**
-     * Get the order's name
-     *
-     * @return void
-     * @author
-     **/
-    public function getName()
+    public function __construct(OrderStorage $orderStorage)
     {
-        return $this->name;
+        $this->orderStorage = $orderStorage;
     }
 
     /**
@@ -46,7 +29,7 @@ class Order
      **/
     public function totalItems()
     {
-        return count($this->products);
+        return $this->orderStorage->getTotalItems();
     }
 
     /**
@@ -57,24 +40,18 @@ class Order
      **/
     public function subTotal()
     {
-        $this->subTotal = 0;
-        foreach($this->products as $p)
-        {
-            $this->subTotal += $p->getPrice();
-        }
-
-        return $this->subTotal;
+        return $this->orderStorage->subTotal();
     }
 
     /**
-     * undocumented function
+     * Add Item to a product
      *
      * @return void
      * @author
      **/
     public function addProduct(Product $product)
     {
-        array_push($this->products, $product);
+        $this->orderStorage->addItem($product);
     }
 
 }

@@ -1,6 +1,4 @@
-<?php
-
-namespace Rightleaf\Cart\Tests;
+<?php namespace Rightleaf\Cart\Tests;
 
 use Rightleaf\Cart\Order;
 use Rightleaf\Cart\Product;
@@ -14,18 +12,6 @@ use \Mockery as m;
 class OrderTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * test we load up ok.
-     *
-     * @return void
-     * @author
-     **/
-    public function testShouldInstantiateWithDefaults()
-    {
-        $order = new Order();
-        $this->assertEquals("Unknown Order", $order->getName(), 'Order instantiated with wrong name');
-    }
-
-    /**
      * Should setup with no products... duh.
      *
      * @return void
@@ -33,7 +19,9 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testWeHaveNoProductsByDefault()
     {
-        $order = new Order();
+        $mockStorage = m::mock('Rightleaf\Cart\OrderStorage');
+        $mockStorage->shouldReceive('getTotalItems')->andReturn(0);
+        $order = new Order($mockStorage);
         $this->assertEquals(0, $order->totalItems(), 'There should have been 0 items in order');
     }
 
@@ -45,8 +33,13 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testWeCanAddAProduct()
     {
-        $order = new Order();
-        $product = \Mockery::mock("Rightleaf\Cart\Product");
+        $mockStorage = m::mock('Rightleaf\Cart\OrderStorage');
+        $mockStorage->shouldReceive('addItem')->once();
+        $mockStorage->shouldReceive('getTotalItems')->once()->andReturn(1);
+
+        $order = new Order($mockStorage);
+
+        $product = m::mock("Rightleaf\Cart\Product");
 
         $order->addProduct($product);
 
@@ -61,24 +54,20 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testOrderShouldCalculateProductTotals()
     {
-        $expectedTotal  = 0;
-        $totalProductsToTest  = rand(2,10);
+        $mockStorage = m::mock('Rightleaf\Cart\OrderStorage');
+        $mockStorage->shouldReceive('addItem')->times(3);
+        $mockStorage->shouldReceive('getTotalItems')->once()->andReturn(3);
+        $order = new Order($mockStorage);
 
-        $order = new Order();
-
-        for($i = 0; $i<=$totalProductsToTest; $i++)
+        for($i = 0; $i<=2; $i++)
         {
-            $prodPrice = rand(1, 999);
-            $expectedTotal += $prodPrice;
-
-            $prod = \Mockery::mock("Rightleaf\Cart\Product");
-            $prod->shouldReceive('getPrice')->andReturn($prodPrice);
-
+            $prod = m::mock("Rightleaf\Cart\Product");
             $order->addProduct($prod);
 
         }
 
-        $this->assertEquals($expectedTotal, $order->subTotal(), 'Subtotal Didnt Match');
+        $mockStorage->shouldReceive('subTotal')->once()->andReturn(99);
+        $this->assertEquals(99, $order->subTotal(), 'Subtotal Didnt Match');
 
     }
 

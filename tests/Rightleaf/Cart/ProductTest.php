@@ -1,6 +1,4 @@
-<?php
-
-namespace Rightleaf\Cart\Tests;
+<?php namespace Rightleaf\Cart\Tests;
 
 use Rightleaf\Cart\Product;
 
