@@ -54,4 +54,15 @@ class Order
         $this->orderStorage->addItem($product);
     }
 
+    /**
+     * Save the order
+     *
+     * @return void
+     * @author
+     **/
+    public function save()
+    {
+        return $this->orderStorage->save();
+    }
+
 }

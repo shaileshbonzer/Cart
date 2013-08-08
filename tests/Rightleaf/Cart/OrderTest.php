@@ -71,4 +71,41 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    /**
+     * Return all products in orderstorage
+     *
+     * @return void
+     * @author
+     **/
+    public function testShouldReturnAllProducts()
+    {
+        $mockStorage = m::mock('Rightleaf\Cart\ArrayStorage');
+        $mockStorage->shouldReceive('addItem')->times(2);
+
+
+
+        $order = new Order($mockStorage);
+        $expectedProducts = [];
+
+        for($i = 0; $i<=1; $i++)
+        {
+            $prod = m::mock("Rightleaf\Cart\Product");
+            $hash = $order->addProduct($prod);
+            $expectedProducts[$hash] = $prod;
+        }
+
+        $mockStorage->shouldReceive('save')->times(1)->andReturn(
+            ['products'=>$expectedProducts,
+                 'shipping'=>[],
+                 'billing'=>[]]
+        );
+
+        $this->assertEquals(
+                ['products'=>$expectedProducts,
+                 'shipping'=>[],
+                 'billing'=>[]
+                 ], $order->save(), 'Order Didnt Dave Messed Up');
+
+    }
+
 }
