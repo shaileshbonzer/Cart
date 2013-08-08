@@ -2,6 +2,10 @@
 
 use Rightleaf\Cart\OrderStorageInterface;
 
+/**
+ * Class ArrayStorage
+ * @package Rightleaf\Cart
+ */
 class ArrayStorage implements OrderStorageInterface
 {
 
@@ -24,12 +28,12 @@ class ArrayStorage implements OrderStorageInterface
         ];
     }
 
+
     /**
-     * Add a product to the session
-     *
-     * @return void
-     * @author
-     **/
+     * @param Product $product
+     * @param int $qty
+     * @return string
+     */
     public function addProduct(Product $product, $qty = 1)
     {
         $hash = uniqid();
@@ -68,6 +72,18 @@ class ArrayStorage implements OrderStorageInterface
     public function getTotalItems()
     {
         return count($this->products);
+    }
+
+    /**
+     * return the product array
+     *
+     * @return void
+     * @author
+     *  @TODO this should be SPL interator - but not now...
+     **/
+    public function getProducts()
+    {
+        return $this->products;
     }
 
 }

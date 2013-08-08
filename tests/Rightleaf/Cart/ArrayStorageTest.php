@@ -28,6 +28,26 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
                  ], $storage->save(), 'Array Storage Structure Messed Up');
     }
 
+
+    /**
+     * Make sure app returns a clean formatted array after loading some products
+     *
+     * @return void
+     * @author
+     **/
+    public function testShouldReturnStructurdArrayOnSave()
+    {
+        $storage = new ArrayStorage();
+        $product = m::mock("Rightleaf\\Cart\\Product");
+        $hash = $storage->addProduct($product);
+
+        $this->assertEquals(
+                ['products'=>[$hash=>$product],
+                 'shipping'=>[],
+                 'billing'=>[]
+                 ], $storage->save(), 'Array Storage Structure Messed Up');
+    }
+
     /**
      * Add a product
      *
@@ -71,6 +91,23 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
         $hash = $storage->addProduct($product);
         $storage->removeProduct($hash);
         $this->assertSame(0, $storage->getTotalItems(), 'Product Wast removed');
+    }
+
+    /**
+     * Return a bunch of products
+     *
+     * @return void
+     * @author
+     **/
+    public function testShouldReturnAllProducts()
+    {
+        $storage = new ArrayStorage();
+        $howMany = 1;
+
+        $product  = m::mock("Rightleaf\\Cart\\Product");
+        $storage->addProduct($product);
+
+        $this->assertEquals($howMany, count($storage->getProducts()), 'Total added doesnt match total received');
     }
 
 
