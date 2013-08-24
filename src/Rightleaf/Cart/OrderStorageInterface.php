@@ -23,6 +23,7 @@ interface OrderStorageInterface
     public function removeProduct($hash);
 
     public function getTotalItems();
+    public function getProducts();
 //  public function getUniqueItems();
 //  public function updateProductQuantity($hash, $qty);
 }

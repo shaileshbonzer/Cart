@@ -33,6 +33,14 @@ class Order
     }
 
     /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->orderStorage->getProducts();
+    }
+
+    /**
      * Calculate the subtotal
      *
      * @return void
@@ -42,6 +50,8 @@ class Order
     {
         return $this->orderStorage->subTotal();
     }
+
+
 
     /**
      * Add Item to a product
