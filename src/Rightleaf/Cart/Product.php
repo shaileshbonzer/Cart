@@ -89,7 +89,7 @@ abstract Class Product {
      **/
     public function setQuantity($quantity)
     {
-        if(!is_numeric($quantity) || $quantity < 0)
+        if(!is_int($quantity) || $quantity < 0)
         {
             throw new ProductException('Quantity must be a positive integer > 0');
         }
@@ -122,7 +122,7 @@ abstract Class Product {
      **/
     public function setPrice($price)
     {
-        if(!is_int($price) || $price < 0)
+        if(!is_numeric($price) || $price < 0)
         {
             throw new ProductException("Price must be a positive integer");
         }
