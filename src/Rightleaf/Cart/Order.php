@@ -51,8 +51,6 @@ class Order
         return $this->orderStorage->subTotal();
     }
 
-
-
     /**
      * Add Item to a product
      *
@@ -62,6 +60,17 @@ class Order
     public function addProduct(Product $product)
     {
         $this->orderStorage->addProduct($product);
+    }
+
+    /**
+     * Remove product from cart
+     *
+     * @return void
+     * @author
+     **/
+    public function removeProduct($hash)
+    {
+        $this->orderStorage->removeProduct($hash);
     }
 
     /**
