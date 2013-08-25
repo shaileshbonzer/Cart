@@ -11,13 +11,16 @@ abstract Class Product {
 
 
     /**
-     * Load up with how many
-     *
-     * @return void
-     * @author
-     **/
-    public function __construct($quantity = 1)
+     * @param int $quantity
+     * @param string $name
+     * @param int $price
+     * @param null $id
+     */
+    public function __construct($quantity = 1, $name = 'Foo', $price = 1, $id = 1)
     {
+        $this->setId($id);
+        $this->setName($name);
+        $this->setPrice($price);
         $this->setQuantity($quantity);
     }
 
@@ -86,9 +89,9 @@ abstract Class Product {
      **/
     public function setQuantity($quantity)
     {
-        if(!is_numeric($quantity) || $quantity < 1)
+        if(!is_numeric($quantity) || $quantity < 0)
         {
-            throw new ProductException('Quantity must be a positive intiger > 0');
+            throw new ProductException('Quantity must be a positive integer > 0');
         }
 
         $this->quantity = $quantity;
@@ -108,6 +111,7 @@ abstract Class Product {
         }
 
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -120,10 +124,11 @@ abstract Class Product {
     {
         if(!is_int($price) || $price < 0)
         {
-            throw new ProductException("Price must be a positive intiger");
+            throw new ProductException("Price must be a positive integer");
         }
 
         $this->price = $price;
+        return $this;
     }
 
     /**
@@ -138,6 +143,7 @@ abstract Class Product {
         {
             $this->name = $name;
         }
+        return $this;
 
     }
 

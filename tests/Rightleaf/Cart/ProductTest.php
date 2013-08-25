@@ -82,9 +82,8 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testQuantityHasToBeNumeric()
     {
-        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive intiger > 0');
-        $product = new DefaultProduct();
-        $product->setQuantity('Invalid String');
+        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive integer > 0');
+        $product = new DefaultProduct(-20, 'Test', 1,'foo');
     }
 
     /**
@@ -95,9 +94,9 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testQuantityHasToBePositive()
     {
-        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive intiger > 0');
-        $product = new DefaultProduct();
-        $product->setQuantity(-20);
+        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive integer > 0');
+        $product = new DefaultProduct(-20, 'Test', 1,1);
+        //$product->setQuantity(-20);
     }
 
     /**
@@ -108,9 +107,8 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testProductShouldThrowExceptionIfPriceIsNotPositive()
     {
-        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Price must be a positive intiger');
-        $product = new DefaultProduct();
-        $product->setPrice(-99);
+        $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Price must be a positive integer');
+        $product = new DefaultProduct(1, 'Unknown Product', -22,1);
     }
 
     /**
@@ -121,7 +119,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testProductShouldReturnDefaultName()
     {
-        $product = new DefaultProduct();
+        $product = new DefaultProduct(1, 'Unkown Product', 0,1);
         $this->assertEquals('Unkown Product', $product->getName(), 'Product doesnt return default name');
     }
 
@@ -146,9 +144,9 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testNameShouldNotBeChangedIfBlank()
     {
-        $product = new DefaultProduct();
+        $product = new DefaultProduct(1, 'Unknown Product', 1,1);
         $product->setName(NULL);
-        $this->assertEquals('Unkown Product', $product->getName(), 'Product doesnt return default name');
+        $this->assertEquals('Unknown Product', $product->getName(), 'Product doesnt return default name');
     }
 
     /**
@@ -192,16 +190,28 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     }
 
 
+
     /**
      * Set our product up from the construct
      *
      * @return void
      * @author
      **/
-    // public function testProductSetupFromConstruct()
-    // {
-    //     //$product = new DefaultProduct();
-    // }
+     public function testProductSetupFromConstruct()
+     {
+         $product = new DefaultProduct(1, 'Test', 2, 1);
+
+         $output = [
+             'id' => $product->getId(),
+             'name' => $product->getName(),
+             'quantity' => $product->getQuantity(),
+             'price' => $product->getPrice()
+         ];
+         $this->assertEquals($output, ['id' => 1,
+                                       'name' => 'Test',
+                                       'quantity' => 1,
+                                       'price' => 2]);
+     }
 
 
 }
