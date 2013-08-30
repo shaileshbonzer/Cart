@@ -59,7 +59,7 @@ class Order
      **/
     public function addProduct(Product $product)
     {
-        $this->orderStorage->addProduct($product);
+        return $this->orderStorage->addProduct($product);
     }
 
     /**

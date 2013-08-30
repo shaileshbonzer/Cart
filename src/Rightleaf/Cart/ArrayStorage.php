@@ -12,6 +12,7 @@ class ArrayStorage implements OrderStorageInterface
     protected $products = [];
     protected $shipping = [];
     protected $billing = [];
+    protected $product_dependants = [];
 
     /**
      * Save session state
