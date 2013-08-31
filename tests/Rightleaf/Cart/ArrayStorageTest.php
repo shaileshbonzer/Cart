@@ -22,10 +22,10 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
     {
         $storage = new ArrayStorage();
         $this->assertEquals(
-                ['products'=>[],
-                 'shipping'=>[],
-                 'billing'=>[]
-                 ], $storage->save(), 'Array Storage Structure Messed Up');
+                array('products'=>array(),
+                 'shipping'=>array(),
+                 'billing'=>array()
+                ), $storage->save(), 'Array Storage Structure Messed Up');
     }
 
 
@@ -42,10 +42,10 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
         $hash = $storage->addProduct($product);
 
         $this->assertEquals(
-                ['products'=>[$hash=>$product],
-                 'shipping'=>[],
-                 'billing'=>[]
-                 ], $storage->save(), 'Array Storage Structure Messed Up');
+                array('products'=>[$hash=>$product],
+                 'shipping'=>array(),
+                 'billing'=>array()
+                ), $storage->save(), 'Array Storage Structure Messed Up');
     }
 
     /**

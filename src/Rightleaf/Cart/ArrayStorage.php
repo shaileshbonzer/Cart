@@ -9,10 +9,10 @@ use Rightleaf\Cart\OrderStorageInterface;
 class ArrayStorage implements OrderStorageInterface
 {
 
-    protected $products = [];
-    protected $shipping = [];
-    protected $billing = [];
-    protected $product_dependants = [];
+    protected $products = array();
+    protected $shipping = array();
+    protected $billing = array();
+    protected $product_dependants = array();
 
     /**
      * Save session state
@@ -22,11 +22,11 @@ class ArrayStorage implements OrderStorageInterface
      **/
     public function save()
     {
-        return [
+        return array(
             'shipping' => $this->shipping,
             'billing' => $this->billing,
             'products' => $this->products
-        ];
+        );
     }
 
 

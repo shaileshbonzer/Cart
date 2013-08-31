@@ -201,16 +201,16 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      {
          $product = new DefaultProduct(1, 'Test', 2, 1);
 
-         $output = [
+         $output = array(
              'id' => $product->getId(),
              'name' => $product->getName(),
              'quantity' => $product->getQuantity(),
              'price' => $product->getPrice()
-         ];
-         $this->assertEquals($output, ['id' => 1,
-                                       'name' => 'Test',
-                                       'quantity' => 1,
-                                       'price' => 2]);
+         );
+         $this->assertEquals($output, array('id' => 1,
+                                           'name' => 'Test',
+                                           'quantity' => 1,
+                                           'price' => 2));
      }
 
 

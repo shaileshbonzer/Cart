@@ -80,7 +80,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
         $mockStorage->shouldReceive('addProduct')->times(2);
 
         $order = new Order($mockStorage);
-        $expectedProducts = [];
+        $expectedProducts = array();
 
         for($i = 0; $i<=1; $i++)
         {
@@ -111,7 +111,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
 
 
         $order = new Order($mockStorage);
-        $expectedProducts = [];
+        $expectedProducts = array();
 
         for($i = 0; $i<=1; $i++)
         {
@@ -121,16 +121,16 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
         }
 
         $mockStorage->shouldReceive('save')->times(1)->andReturn(
-            ['products'=>$expectedProducts,
-                 'shipping'=>[],
-                 'billing'=>[]]
+            array('products'=>$expectedProducts,
+                 'shipping'=>array(),
+                 'billing'=>array())
         );
 
         $this->assertEquals(
-                ['products'=>$expectedProducts,
-                 'shipping'=>[],
-                 'billing'=>[]
-                 ], $order->save(), 'Order Didnt Dave Messed Up');
+                array('products'=>$expectedProducts,
+                 'shipping'=>array(),
+                 'billing'=>array()
+                ), $order->save(), 'Order Didnt Dave Messed Up');
 
     }
 }
