@@ -3,10 +3,10 @@
 use Rightleaf\Cart\OrderStorageInterface;
 
 /**
- * Class ArrayStorage
+ * Class ArrayOrderStorage
  * @package Rightleaf\Cart
  */
-class ArrayStorage implements OrderStorageInterface
+class ArrayOrderStorage implements OrderStorageInterface
 {
 
     protected $products = array();
