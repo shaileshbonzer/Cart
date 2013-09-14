@@ -76,7 +76,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
      */
     public function testShouldRetunAllProductsOnGet()
     {
-        $mockStorage = m::mock('Rightleaf\Cart\ArrayStorage');
+        $mockStorage = m::mock('Rightleaf\Cart\ArrayOrderStorage');
         $mockStorage->shouldReceive('addProduct')->times(2);
 
         $order = new Order($mockStorage);
@@ -105,7 +105,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testShouldReturnAllProductsOnSave()
     {
-        $mockStorage = m::mock('Rightleaf\Cart\ArrayStorage');
+        $mockStorage = m::mock('Rightleaf\Cart\ArrayOrderStorage');
         $mockStorage->shouldReceive('addProduct')->times(2);
 
 

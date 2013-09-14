@@ -2,7 +2,7 @@
 
 use Rightleaf\Cart\Order;
 use Rightleaf\Cart\Product;
-use Rightleaf\Cart\ArrayStorage;
+use Rightleaf\Cart\ArrayOrderStorage;
 
 use \Mockery as m;
 
@@ -10,7 +10,7 @@ use \Mockery as m;
 /**
 * Storage Tests
 */
-class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
+class ArrayOrderStorageTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * Make sure app returns a clean formatted array
@@ -20,7 +20,7 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testShouldReturnBlankStructurdArrayOnSave()
     {
-        $storage = new ArrayStorage();
+        $storage = new ArrayOrderStorage();
         $this->assertEquals(
                 array('products'=>array(),
                  'shipping'=>array(),
@@ -37,7 +37,7 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testShouldReturnStructurdArrayOnSave()
     {
-        $storage = new ArrayStorage();
+        $storage = new ArrayOrderStorage();
         $product = m::mock("Rightleaf\\Cart\\Product");
         $hash = $storage->addProduct($product);
 
@@ -56,7 +56,7 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testShouldBeAbleToAddSingleProduct()
     {
-        $storage = new ArrayStorage();
+        $storage = new ArrayOrderStorage();
 
         $product = m::mock("Rightleaf\\Cart\\Product");
         $hash = $storage->addProduct($product);
@@ -73,7 +73,7 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
     public function testShouldExpectExceptionWhenRemovingNonProduct()
     {
         $this->setExpectedException('RightLeaf\\Cart\\OrderStorageException', 'Cannot remove nonexistant product');
-        $storage = new ArrayStorage();
+        $storage = new ArrayOrderStorage();
         $storage->removeProduct('12345');
     }
 
@@ -85,7 +85,7 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testShouldBeAbleToRemoveANewProduct()
     {
-        $storage = new ArrayStorage();
+        $storage = new ArrayOrderStorage();
 
         $product = m::mock("Rightleaf\\Cart\\Product");
         $hash = $storage->addProduct($product);
@@ -101,7 +101,7 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
      **/
     public function testShouldReturnAllProducts()
     {
-        $storage = new ArrayStorage();
+        $storage = new ArrayOrderStorage();
         $howMany = 1;
 
         $product  = m::mock("Rightleaf\\Cart\\Product");
