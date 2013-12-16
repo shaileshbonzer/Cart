@@ -6,9 +6,9 @@ abstract Class Product {
 
     protected $id = NULL;
     protected $price = 0;
+    protected $priceOverride = 0;
     protected $name = 'Unkown Product';
     protected $quantity = 0;
-
 
     /**
      * @param int $quantity
@@ -33,7 +33,11 @@ abstract Class Product {
      **/
     public function getPrice()
     {
-        return number_format($this->price);
+        if ($this->priceOverride != 0) {
+            return $this->priceOverride;
+        } else {
+            return number_format($this->price);
+        }
     }
 
     /**
@@ -131,6 +135,17 @@ abstract Class Product {
         return $this;
     }
 
+    public function setPriceOverride($price)
+    {
+        if(!is_numeric($price) || $price < 0)
+        {
+            throw new ProductException("Override Price must be a positive integer.")
+        }
+
+        $this->priceOverride = $price;
+        return $this;
+    }
+
     /**
      * Set the name
      *
@@ -146,7 +161,4 @@ abstract Class Product {
         return $this;
 
     }
-
-
-
 }

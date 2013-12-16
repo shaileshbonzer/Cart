@@ -48,6 +48,14 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(99, $product->getPrice(), 'Price set does not match expected');
     }
 
+    public function testPriceCanBeOverridden()
+    {
+        $product = new DefaultProduct();
+        $product->setPrice(99);
+        $this->overridePrice(100);
+        $this->assertEquals(100, $product->getPrice(), 'Price set does not match expected');
+    }
+
     /**
      * Default Quantity should be 1
      *
