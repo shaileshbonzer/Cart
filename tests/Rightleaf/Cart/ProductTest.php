@@ -52,8 +52,15 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     {
         $product = new DefaultProduct();
         $product->setPrice(99);
-        $this->overridePrice(100);
-        $this->assertEquals(100, $product->getPrice(), 'Price set does not match expected');
+        $product->setPrice(100);
+        $this->assertEquals(100, $product->getPrice(), 'Price does not match expected');
+    }
+
+    public function testProductReturnsOriginalPrice()
+    {
+        $product = new DefaultProduct(1, 'Original Product', 10, 1);
+        $product->setPrice(20);
+        $this->assertEquals(10, $product->getOriginalPrice(), 'Original Price is being overridden');
     }
 
     /**
@@ -91,7 +98,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     public function testQuantityHasToBeNumeric()
     {
         $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive integer > 0');
-        $product = new DefaultProduct(-20, 'Test', 1,'foo');
+        $product = new DefaultProduct(-20, 'Test', 1, 'foo');
     }
 
     /**
@@ -103,7 +110,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     public function testQuantityHasToBePositive()
     {
         $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Quantity must be a positive integer > 0');
-        $product = new DefaultProduct(-20, 'Test', 1,1);
+        $product = new DefaultProduct(-20, 'Test', 1, 1);
         //$product->setQuantity(-20);
     }
 
@@ -116,7 +123,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     public function testProductShouldThrowExceptionIfPriceIsNotPositive()
     {
         $this->setExpectedException('RightLeaf\\Cart\\ProductException', 'Price must be a positive integer');
-        $product = new DefaultProduct(1, 'Unknown Product', -22,1);
+        $product = new DefaultProduct(1, 'Unknown Product', -22, 1);
     }
 
     /**
@@ -127,7 +134,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testProductShouldReturnDefaultName()
     {
-        $product = new DefaultProduct(1, 'Unkown Product', 0,1);
+        $product = new DefaultProduct(1, 'Unkown Product', 0, 1);
         $this->assertEquals('Unkown Product', $product->getName(), 'Product doesnt return default name');
     }
 
@@ -152,7 +159,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      **/
     public function testNameShouldNotBeChangedIfBlank()
     {
-        $product = new DefaultProduct(1, 'Unknown Product', 1,1);
+        $product = new DefaultProduct(1, 'Unknown Product', 1, 1);
         $product->setName(NULL);
         $this->assertEquals('Unknown Product', $product->getName(), 'Product doesnt return default name');
     }
