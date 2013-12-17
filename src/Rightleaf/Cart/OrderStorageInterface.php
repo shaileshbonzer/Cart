@@ -22,6 +22,9 @@ interface OrderStorageInterface
     public function addProduct(Product $prodcut, $qty = 1);
     public function removeProduct($hash);
 
+    public function addCoupon(Coupon $coupon);
+    public function removeCoupon($code);
+
     public function getTotalItems();
     public function getProducts();
 }

@@ -132,7 +132,8 @@ abstract Class Product {
             throw new ProductException("Price must be a positive integer");
         }
 
-        if($this->originalPrice === 0) {
+        if($this->originalPrice === 0)
+        {
             $this->originalPrice = $price;
         }
 
