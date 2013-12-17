@@ -23,6 +23,7 @@ interface OrderStorageInterface
     public function removeProduct($hash);
     public function addCoupon($couponId);
     public function removeCoupon($couponId);
+    public function removeAllCoupons();
 
     public function getTotalItems();
     public function getProducts();

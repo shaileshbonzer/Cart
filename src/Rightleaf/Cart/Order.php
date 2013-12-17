@@ -76,6 +76,11 @@ class Order
         return $this->orderStorage->removeCoupon($couponId);
     }
 
+    public function removeAllCoupons()
+    {
+        return $this->orderStorage->removeAllCoupons();
+    }
+
     /**
      * Remove product from cart
      *

@@ -95,6 +95,11 @@ class ArrayOrderStorage implements OrderStorageInterface
         unset($this->coupons[array_search($couponId, $this->coupons)]);
     }
 
+    public function removeAllCoupons()
+    {
+        unset($this->coupons);
+    }
+
     /**
      * Save get total items in cart
      *
