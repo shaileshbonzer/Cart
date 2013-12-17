@@ -2,12 +2,8 @@
 
 use Rightleaf\Cart\Coupon;
 
-class DefaultCoupon extends Coupon {}
+class DefaultCoupon extends Coupon implements CouponInterface {}
 
 class CouponTest extends \PHPUnit_Framework_TestCase {
-
-	public function testIsRunning()
-	{
-		$this->assertTrue(true);
-	}
+	// Coming soon...
 }

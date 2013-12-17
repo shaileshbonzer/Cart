@@ -11,6 +11,7 @@ class ArrayOrderStorage implements OrderStorageInterface
 
     protected $products = array();
     protected $shipping = array();
+    protected $coupons = array();
     protected $billing = array();
     protected $product_dependants = array();
 
@@ -62,6 +63,36 @@ class ArrayOrderStorage implements OrderStorageInterface
         }
 
         unset($this->products[$hash]);
+    }
+
+    /**
+     * Add a coupon by id
+     *
+     * @return void
+     * @author
+     **/
+    public function addCoupon($couponId)
+    {
+        if (in_array($couponId, $this->coupons)) {
+              throw new OrderStorageException("Coupon already exists.");
+        }
+
+        array_push($this->coupons, $couponId);
+    }
+
+    /**
+     * Remove a coupon by id
+     *
+     * @return void
+     * @author
+     **/
+    public function removeCoupon($couponId)
+    {
+        if (!in_array($couponId, $this->coupons)) {
+            throw new OrderStorageException("Coupon doesn't exist");
+        }
+
+        unset($this->coupons[array_search($couponId, $this->coupons)]);
     }
 
     /**

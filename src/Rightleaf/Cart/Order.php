@@ -63,6 +63,20 @@ class Order
     }
 
     /**
+     * [addCoupon description]
+     * @param integer $couponId coupon id
+     */
+    public function addCoupon($couponId)
+    {
+        return $this->orderStorage->addCoupon($couponId);
+    }
+
+    public function removeCoupon($couponId)
+    {
+        return $this->orderStorage->removeCoupon($couponId);
+    }
+
+    /**
      * Remove product from cart
      *
      * @return void
