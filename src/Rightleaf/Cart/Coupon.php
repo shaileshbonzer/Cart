@@ -11,10 +11,13 @@ abstract Class Coupon
 	protected $redeemed_order_id;
 	protected $rules;
 
-	function __construct($id = 1, $name = 'New Coupon', $code = substr(md5(uniqid()), 8), $order_id = 0, $redeemed_order_id = NULL, $rules = array())
+	function __construct($id = 1, $name = 'New Coupon', $code = NULL, $order_id = 0, $redeemed_order_id = NULL, $rules = array())
 	{
 		$this->setId($id);
 		$this->setName($name);
+		if(!$code) {
+			$code = substr(md5(uniqid()), 8);
+		}
 		$this->setCode($code, 8);
 		$this->setOrderId($order_id);
 		$this->setRedeemedOrderId($redeemed_order_id);

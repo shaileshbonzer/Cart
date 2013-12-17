@@ -5,7 +5,7 @@
     "description": "A custom order/cart library.",
     "keywords": ["checkout", "cart","orders"],
     "homepage": "http://github.com/rightleaf/Cart.git",
-    "license": "MIT",
+    "license": "GPL v2",
     "authors": [
         {
             "name": "Rightleaf",
