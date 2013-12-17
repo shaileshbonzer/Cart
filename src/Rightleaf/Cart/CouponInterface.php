@@ -17,8 +17,8 @@ class CouponInterfaceException extends \Exception
 interface CouponInterface
 {
 	function setCouponRules($product_id, $new_product_price);
-	function applyCoupon(OrderStorageInterface $order);
-	function removeCoupon(OrderStorageInterface $order);
+	function applyCoupon(Order $order);
+	function removeCoupon(Order $order);
 
 	function redeemCoupon($coupon_id);
 }
