@@ -1,6 +1,6 @@
 {
     "name": "rightleaf/cart",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "type": "library",
     "description": "A custom order/cart library.",
     "keywords": ["checkout", "cart","orders"],
