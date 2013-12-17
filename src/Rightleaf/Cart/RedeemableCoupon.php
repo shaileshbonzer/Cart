@@ -8,12 +8,12 @@ use Rightleaf\Cart\CouponInterface;
 */
 class RedeemableCoupon extends Coupon implements CouponInterface {
 
-	function setCouponRule($product_id, $new_product_price)
+	public function setCouponRule($product_id, $new_product_price)
 	{
 		return $this->setRules(array($product_id => $new_product_price));
 	}
 
-	function applyCoupon(OrderStorageInterface $order)
+	public function applyCoupon(OrderStorageInterface $order)
 	{
 		$products = $order->getProducts();
 		$couponRules = $this->getRules();
@@ -27,7 +27,7 @@ class RedeemableCoupon extends Coupon implements CouponInterface {
 		}
 	}
 
-	function removeCoupon(OrderStorageInterface $order)
+	public function removeCoupon(OrderStorageInterface $order)
 	{
 		$products = $order->getProducts();
 		$couponRules = $this->getRules();
@@ -42,7 +42,7 @@ class RedeemableCoupon extends Coupon implements CouponInterface {
 
 	}
 
-	function redeemCoupon($coupon_id)
+	public function redeemCoupon($coupon_id)
 	{
 		return $coupon->setRedeemedOrderId($id);
 	}
