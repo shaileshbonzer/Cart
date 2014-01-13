@@ -127,6 +127,18 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Product Should not throw an exception if price is passed in as a string.
+     *
+     * @return void
+     * @author
+     **/
+    public function testProductHasCorrectPriceWhenPriceIsString()
+    {
+        $product = new DefaultProduct(1, 'Unknown Product', '1.11', 1);
+        $this->assertEquals(1.11, $product->getPrice());
+    }
+
+    /**
      * product should have an 'Unknown Product' Name
      *
      * @return void
