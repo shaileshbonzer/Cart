@@ -38,7 +38,7 @@ abstract Class Product {
 
     public function getOriginalPrice()
     {
-        return number_format($this->originalPrice);
+        return $this->originalPrice;
     }
 
     /**
