@@ -33,7 +33,7 @@ abstract Class Product {
      **/
     public function getPrice()
     {
-        return $this->price;
+        return preg_replace("/[^0-9.-]/", "", $this->price);
     }
 
     public function getOriginalPrice()
