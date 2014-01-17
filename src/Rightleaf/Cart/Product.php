@@ -127,7 +127,9 @@ abstract Class Product {
      **/
     public function setPrice($price)
     {
-        if($price < 0)
+
+        $price = preg_replace("/[^0-9.-]/", "", $price);
+        if(!is_numeric($price) || $price < 0)
         {
             throw new ProductException("Price must be a positive integer");
         }

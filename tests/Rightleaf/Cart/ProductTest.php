@@ -244,7 +244,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      {
         $price = "2,300.11";
         $product = new DefaultProduct(1, 'Test', $price, 1);
-        $this->assertEquals($product->getPrice(), $price);
+        $this->assertEquals($product->getPrice(), preg_replace("/[^0-9.]/", "", $price));
      }
 
 
