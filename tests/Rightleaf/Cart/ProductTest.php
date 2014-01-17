@@ -240,5 +240,12 @@ class ProductTest extends \PHPUnit_Framework_TestCase
                                            'price' => 2));
      }
 
+     public function testStringBasedPricesShouldWork()
+     {
+        $price = "2,300.11";
+        $product = new DefaultProduct(1, 'Test', $price, 1);
+        $this->assertEquals($product->getPrice(), $price);
+     }
+
 
 }
