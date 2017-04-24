@@ -9,19 +9,23 @@ abstract Class Product {
     protected $originalPrice = 0;
     protected $name = 'Unkown Product';
     protected $quantity = 0;
+    protected $type = 'Unkown Type';
 
     /**
+     * Product constructor.
      * @param int $quantity
      * @param string $name
      * @param int $price
-     * @param null $id
+     * @param int $id
+     * @param string $type
      */
-    public function __construct($quantity = 1, $name = 'Foo', $price = 1, $id = 1)
+    public function __construct($quantity = 1, $name = 'Foo', $price = 1, $id = 1, $type = 'Foo')
     {
         $this->setId($id);
         $this->setName($name);
         $this->setPrice($price);
         $this->setQuantity($quantity);
+        $this->setType($type);
     }
 
 
@@ -74,6 +78,16 @@ abstract Class Product {
         return $this->quantity;
     }
 
+    /**
+     * Get the product's type
+     *
+     * @return void
+     * @author
+     **/
+    public function getType()
+    {
+        return $this->type;
+    }
 
     /**
      * Return the value of this * qty
@@ -89,9 +103,11 @@ abstract Class Product {
     /**
      * Set the quantity
      *
+     * @param $quantity
      * @return void
      * @author
-     **/
+     * @throws ProductException
+     */
     public function setQuantity($quantity)
     {
         if(!is_int($quantity) || $quantity < 0)
@@ -105,9 +121,11 @@ abstract Class Product {
     /**
      * Set the ID
      *
-     * @return void
+     * @param $id
+     * @return $this
      * @author
-     **/
+     * @throws ProductException
+     */
     public function setId ($id)
     {
         if(strlen(trim($id)) <= 0)
@@ -122,9 +140,11 @@ abstract Class Product {
     /**
      * Set the price of the product
      *
-     * @return void
+     * @param $price
+     * @return $this
      * @author
-     **/
+     * @throws ProductException
+     */
     public function setPrice($price)
     {
 
@@ -146,14 +166,32 @@ abstract Class Product {
     /**
      * Set the name
      *
-     * @return void
+     * @param $name
+     * @return $this
      * @author
-     **/
+     */
     public function setName($name)
     {
         if(strlen($name) > 0)
         {
             $this->name = $name;
+        }
+        return $this;
+
+    }
+
+    /**
+     * Set the type
+     *
+     * @param $type
+     * @return $this
+     * @author
+     */
+    public function setType($type)
+    {
+        if(strlen($type) > 0)
+        {
+            $this->type = $type;
         }
         return $this;
 
