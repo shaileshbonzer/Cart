@@ -7,9 +7,9 @@ abstract Class Product {
     protected $id = NULL;
     protected $price = 0;
     protected $originalPrice = 0;
-    protected $name = 'Unkown Product';
+    protected $name = 'Unknown Product';
     protected $quantity = 0;
-    protected $type = 'Unkown Type';
+    protected $type = 'Unknown Type';
 
     /**
      * Product constructor.
