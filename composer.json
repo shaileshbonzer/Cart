@@ -4,7 +4,7 @@
     "type": "library",
     "description": "A custom order/cart library.",
     "keywords": ["checkout", "cart","orders"],
-    "homepage": "http://github.com/rightleaf/Cart.git",
+    "homepage": "http://github.com/shaileshbonzer/Cart.git",
     "license": "GPL v2",
     "authors": [
         {
