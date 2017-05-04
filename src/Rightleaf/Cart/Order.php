@@ -22,17 +22,19 @@ class Order
     }
 
     /**
-     * give us back the total items
+     * Give us back the total items
      *
-     * @return void
+     * @return mixed
      * @author
-     **/
+     */
     public function totalItems()
     {
         return $this->orderStorage->getTotalItems();
     }
 
     /**
+     * Get total products of order
+     *
      * @return mixed
      */
     public function getProducts()
@@ -53,6 +55,7 @@ class Order
 
     /**
      * Get discount applied
+     *
      * @return mixed
      */
     public function getDiscount()
@@ -74,23 +77,32 @@ class Order
     /**
      * Add Item to a product
      *
-     * @return void
+     * @param Product $product
+     * @return mixed
      * @author
-     **/
+     */
     public function addProduct(Product $product)
     {
         return $this->orderStorage->addProduct($product);
     }
 
     /**
-     * [addCoupon description]
-     * @param integer $couponId coupon id
+     * Add coupon to order
+     *
+     * @param $couponId
+     * @return mixed
      */
     public function addCoupon($couponId)
     {
         return $this->orderStorage->addCoupon($couponId);
     }
 
+    /**
+     * Remove coupon applied to order
+     *
+     * @param $couponId
+     * @return mixed
+     */
     public function removeCoupon($couponId)
     {
         return $this->orderStorage->removeCoupon($couponId);
@@ -104,9 +116,9 @@ class Order
     /**
      * Remove product from cart
      *
-     * @return void
+     * @param $hash
      * @author
-     **/
+     */
     public function removeProduct($hash)
     {
         $this->orderStorage->removeProduct($hash);
@@ -115,9 +127,9 @@ class Order
     /**
      * Save the order
      *
-     * @return void
+     * @return mixed
      * @author
-     **/
+     */
     public function save()
     {
         return $this->orderStorage->save();

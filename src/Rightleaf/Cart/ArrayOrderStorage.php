@@ -8,7 +8,6 @@ use Rightleaf\Cart\OrderStorageInterface;
  */
 class ArrayOrderStorage implements OrderStorageInterface
 {
-
     protected $products = array();
     protected $shipping = array();
     protected $coupons = array();
@@ -19,9 +18,8 @@ class ArrayOrderStorage implements OrderStorageInterface
     /**
      * Save session state
      *
-     * @return void
-     * @author array();
-     **/
+     * @return array
+     */
     public function save()
     {
         return array(
@@ -34,6 +32,8 @@ class ArrayOrderStorage implements OrderStorageInterface
 
 
     /**
+     * Add new product to order
+     *
      * @param Product $product
      * @param int $qty
      * @return string
@@ -54,9 +54,9 @@ class ArrayOrderStorage implements OrderStorageInterface
     /**
      * Remove a product by it's hash
      *
-     * @return void
-     * @author
-     **/
+     * @param $hash
+     * @throws OrderStorageException
+     */
     public function removeProduct($hash)
     {
         if(!array_key_exists($hash, $this->products))
@@ -70,9 +70,9 @@ class ArrayOrderStorage implements OrderStorageInterface
     /**
      * Add a coupon by id
      *
-     * @return void
-     * @author
-     **/
+     * @param $couponId
+     * @throws OrderStorageException
+     */
     public function addCoupon($couponId)
     {
         if (in_array($couponId, $this->coupons)) {
@@ -85,9 +85,9 @@ class ArrayOrderStorage implements OrderStorageInterface
     /**
      * Remove a coupon by id
      *
-     * @return void
-     * @author
-     **/
+     * @param $couponId
+     * @throws OrderStorageException
+     */
     public function removeCoupon($couponId)
     {
         if (!in_array($couponId, $this->coupons)) {

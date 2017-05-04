@@ -16,7 +16,6 @@ class OrderStorageException extends \Exception
 */
 interface OrderStorageInterface
 {
-
     public function save();
 
     public function addProduct(Product $prodcut, $qty = 1);
