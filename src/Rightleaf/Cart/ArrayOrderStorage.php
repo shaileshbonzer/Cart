@@ -14,6 +14,7 @@ class ArrayOrderStorage implements OrderStorageInterface
     protected $coupons = array();
     protected $billing = array();
     protected $product_dependants = array();
+    protected $discount = 0;
 
     /**
      * Save session state
@@ -26,7 +27,8 @@ class ArrayOrderStorage implements OrderStorageInterface
         return array(
             'shipping' => $this->shipping,
             'billing' => $this->billing,
-            'products' => $this->products
+            'products' => $this->products,
+            'discount' => $this->discount
         );
     }
 
@@ -123,4 +125,24 @@ class ArrayOrderStorage implements OrderStorageInterface
         return $this->products;
     }
 
+    /**
+     * return the discount applied by coupon
+     *
+     * @return int
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    /**
+     * Set discount amount
+     *
+     * @param $discount
+     * @return mixed
+     */
+    public function setDiscount($discount)
+    {
+        return $this->discount = $discount;
+    }
 }

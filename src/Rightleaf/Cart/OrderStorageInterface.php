@@ -27,4 +27,7 @@ interface OrderStorageInterface
 
     public function getTotalItems();
     public function getProducts();
+
+    public function getDiscount();
+    public function setDiscount($discount);
 }

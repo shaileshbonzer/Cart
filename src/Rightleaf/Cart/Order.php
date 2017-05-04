@@ -52,6 +52,26 @@ class Order
     }
 
     /**
+     * Get discount applied
+     * @return mixed
+     */
+    public function getDiscount()
+    {
+        return $this->orderStorage->getDiscount();
+    }
+
+    /**
+     * Set discount for order
+     *
+     * @param $discount
+     * @return mixed
+     */
+    public function setDiscount($discount)
+    {
+        return $this->orderStorage->setDiscount($discount);
+    }
+
+    /**
      * Add Item to a product
      *
      * @return void
